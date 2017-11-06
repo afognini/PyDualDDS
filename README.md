@@ -12,13 +12,13 @@ Read the file PyDualDDS.pdf. The documentation is also available in docs/_build/
 
 If you use this software in your research, please consider citing it like:
 
-Andreas Fognini, Val Zwiller PyDualDDS. Available at https://github.com/afognini/.
+Andreas Fognini PyDualDDS. Available at https://github.com/afognini/.
 
 # Authors, Copyright, License
 
-Authors: Andreas Fognini, Val Zwiller
+Authors: Andreas Fognini
 
-Copyright (C) Andreas Fognini, Val Zwiller
+Copyright (C) Andreas Fognini
 
 Released under the terms of the GPLv3 License (see file LICENSE)
 
