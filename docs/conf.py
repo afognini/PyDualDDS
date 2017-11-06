@@ -239,7 +239,7 @@ latex_elements = {
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
     (master_doc, 'PyDualDDS.tex', u'PyDualDDS Documentation',
-     u'Andreas Fognini,  Val Zwiller', 'manual'),
+     u'Andreas Fognini', 'manual'),
 ]
 
 # The name of an image file (relative to this directory) to place at the top of
