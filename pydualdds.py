@@ -215,7 +215,7 @@ class DacCom(object):
         self.DAC_PAGE = 0 #keep track of register pages to speed up communication
 
         self.PORT = 0
-        self.DEBUG = False
+        self.DEBUG = True
 
         self.gpio_dac = gpio.GpioController()
         self.gpio_dac.open_from_url('ftdi://ftdi:2232h/1',direction=int('11111111',2))
@@ -374,7 +374,7 @@ class DacCom(object):
             :param int address: Address of register with page prefix, e.g 0x0328 writes the register 0x28 of page multi-DUC1 and multi=DUC2 at the same time.
             :param int data: data to write to register (0x00-0xFF)
         """
-        self.gpio.set_direction(int('11111111',2))
+        self.gpio.set_direction(0xFF, 0xFF)
 
         self.set_bit_on_port(self.DAC_SCK, False)
         self.port_flush()
@@ -453,7 +453,7 @@ class DacCom(object):
             self.port_flush()
             mask = mask >> 1
 
-        self.gpio.set_direction(int('11111001',2))
+        self.gpio.set_direction(0xFF, 0b11111001)
         self.set_bit_on_port(self.DAC_SDIO, False) #Can't set a value which is on read mode
         self.set_bit_on_port(self.DAC_SDO, False) #Can't set a value which is on read mode
 
@@ -477,7 +477,7 @@ class DacCom(object):
         self.set_bit_on_port(self.DAC_SDENB, True)
         self.port_flush()
 
-        self.gpio.set_direction(int('11111111',2))
+        self.gpio.set_direction(0xFF, 0xFF)
         return data
 
     def lmk_write(self, address, data):
@@ -486,7 +486,7 @@ class DacCom(object):
             :param int address: Address of register
             :param int data: data
         """
-        self.gpio.set_direction(int('11111111',2))
+        self.gpio.set_direction(0xFF, 0xFF)
         RW = 0
         W1 = 0
         W0 = 0
@@ -553,7 +553,7 @@ class DacCom(object):
             self.port_flush()
             mask = mask >> 1
 
-        self.gpio.set_direction(int('11011111',2))
+        self.gpio.set_direction(0xFF, 0b11011111)
         self.set_bit_on_port(self.LMK_SDIO, False) #Can't set a value which is on read mode
         self.set_bit_on_port(self.LMK_SCK, False)
         self.port_flush()
@@ -580,7 +580,7 @@ class DacCom(object):
         self.set_bit_on_port(self.LMK_CS, True)
         self.port_flush()
 
-        self.gpio.set_direction(int('11111111',2))
+        self.gpio.set_direction(0xFF, 0xFF)
         return data
 
     def close(self):
